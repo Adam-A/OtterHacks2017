@@ -105,6 +105,7 @@ function placesCallback(results, status) {
 	var placeLoc = place.geometry.location;
 	var marker = new google.maps.Marker({
 	  map: map,
+          icon: 'http://i.imgur.com/VUgB2nF.png',
 	  position: place.geometry.location
 	});
 	

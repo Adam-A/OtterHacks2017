@@ -33,7 +33,7 @@ var app = {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				currentUserCoords = position.coords;
 				initialize(position.coords.latitude, position.coords.longitude);
-			});
+			}, function(error) { alert("Unable to get GPS location: " + error); });
 		});
     },
 
@@ -117,5 +117,5 @@ function distanceMatrixCallback(response, status) {
   // the basics of a callback function.
   placeDistances.push(response);
   console.log(response);
-  console.log(response.rows[0].elements[0].duration.text + " to walk " + placeDistances[0].rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
+  console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }

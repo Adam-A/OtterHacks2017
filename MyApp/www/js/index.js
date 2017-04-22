@@ -61,12 +61,15 @@ var distanceMatrixService = new google.maps.DistanceMatrixService();
 var currentUserCoords;
 
 function initialize(lat,lng) {
+  var latlng = new google.maps.LatLng(lat,lng);
 
   map = new google.maps.Map(document.getElementById('map'), {
+      center: latlng,
       zoom: 15
     });
 
   var request = {
+    location: latlng,
     radius: '3000',
     types: ['park', 'beach']
   };

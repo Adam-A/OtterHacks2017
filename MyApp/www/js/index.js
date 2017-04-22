@@ -113,8 +113,6 @@ function placesCallback(results, status) {
 		alert('todo: info about selected item');
 	});
   }
-  
-
 
 
 function distanceMatrixCallback(response, status) {
@@ -123,4 +121,15 @@ function distanceMatrixCallback(response, status) {
   placeDistances.push(response);
   console.log(response);
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
+}
+
+function toggleBounce() {
+	if (marker.getAnimation() != NULL)
+	{
+		marker.setAnimation(null);
+	}
+	else 
+	{
+		marker.setAnimation(google.maps.Animation.Bounce);
+	}
 }

@@ -39,12 +39,12 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        //var parentElement = document.getElementById(id);
+        //var listeningElement = parentElement.querySelector('.listening');
+        //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
@@ -106,6 +106,11 @@ function placesCallback(results, status) {
 	var marker = new google.maps.Marker({
 	  map: map,
 	  position: place.geometry.location
+	});
+	
+	marker.addListener('click', function() {
+		// Info box
+		alert('todo: info about selected item');
 	});
   }
   

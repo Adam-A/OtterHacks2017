@@ -59,4 +59,4 @@ typings/
 
 # Cordova
 platforms/
-plugins/
+# plugins/

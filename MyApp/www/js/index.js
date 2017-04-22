@@ -116,12 +116,18 @@ function placeDetailsCallback(placeDetails, status) {
 	var placeLoc = place.geometry.location;
 	var marker = new google.maps.Marker({
 	  map: map,
+          icon: 'http://i.imgur.com/VUgB2nF.png',
 	  position: place.geometry.location
 	});
-	
+	var contentString = place.name;
+
+ 	var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
 	marker.addListener('click', function() {
 		// Info box
-		alert('todo: info about selected item');
+		infowindow.open(map, marker);
+		//alert('todo: info about selected item');
 	});
   }
 

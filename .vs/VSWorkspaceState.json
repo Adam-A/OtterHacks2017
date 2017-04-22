@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MyApp",
+    "\\MyApp\\hooks",
+    "\\MyApp\\plugins",
+    "\\MyApp\\www",
+    "\\MyApp\\www\\js"
+  ],
+  "SelectedNode": "\\MyApp\\plugins\\browser.json",
+  "PreviewInSolutionExplorer": false
+}

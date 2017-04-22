@@ -36,6 +36,7 @@
         <title>Hello World</title>
     </head>
     <body>
+	<!-- "Start" button only needed for Chrome, can be removed when running on Android. -->
 	<button id="start">Start</button>
 	<div id="map"></div>
         <div class="app">
@@ -46,6 +47,7 @@
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+		<!-- API key limited by IP. -->
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoYKMQf3WthSaFm6QBCKz_zpqff-E4wls&libraries=places"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/index.js"></script>

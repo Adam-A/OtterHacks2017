@@ -59,6 +59,8 @@ var infowindow;
 var distanceMatrixService = new google.maps.DistanceMatrixService();
 
 var currentUserCoords;
+var placesFound = [];
+var placeDistances = [];
 
 function initialize(lat,lng) {
   var latlng = new google.maps.LatLng(lat,lng);
@@ -83,6 +85,7 @@ function placesCallback(results, status) {
     for (var i = 0; i < 3; i++) {
       var place = results[i];
 	  console.log(place);
+	  placesFound.push(place);
 	  console.log("Name: " + place.name + " | Lat/Lng: " + place.geometry.location.lat() + place.geometry.location.lng())
 	  if ( place.photos ) {
 		console.log(place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
@@ -112,5 +115,7 @@ function placesCallback(results, status) {
 function distanceMatrixCallback(response, status) {
   // See Parsing the Results for
   // the basics of a callback function.
+  placeDistances.push(response);
   console.log(response);
+  console.log(response.rows[0].elements[0].duration.text + " to walk " + placeDistances[0].rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }

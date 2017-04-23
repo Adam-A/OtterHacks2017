@@ -11,7 +11,7 @@ Check us out at https://otterbeactive.com (sponsored by *Domain.com*)
 
 ## Inspiration
 
-> We got inspired by earth Day and dicided to create something green. So we created *otter be active* an app that is helpful for the users and the environment.  
+We were inspired by Earth Day and decided to create something green. So we made an app that got users out into nature.
 
 ## What it does
 
@@ -23,7 +23,7 @@ We used Node.JS and Apache Cordova to implment a cross platform mobile and web a
 
 ## Challenges we ran into
 
-> some of our peers were new with codeing and progams. which caused a delay and was slow procces to complate parts of the app.
+Some of our peers were new with coding and progams, which caused a delay and was slow procces to complate parts of the app.
 
 ## Accomplishments that we're proud of
 

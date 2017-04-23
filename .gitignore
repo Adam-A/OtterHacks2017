@@ -58,6 +58,7 @@ typings/
 .env
 
 # Cordova
-platforms/
+MyApp/platforms/*
+!MyApp/platforms/browser
 # plugins/
 bin/

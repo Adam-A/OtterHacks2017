@@ -54,17 +54,12 @@ h1 {
     text-align:center;
 }
 
-#start {
-	position: absolute;
-	top: 40vh;
-	left: 0px;
-	right: 0px;
-	width: 90vw;
-	height: 100px;
-	margin-left: auto;
-	margin-right: auto;
+.tab-content {
+    padding: 10px
 }
+
 #map {
+<<<<<<< HEAD
 	height: 90vh;
 }
 
@@ -108,4 +103,7 @@ h1 {
 .CardHeader-Sunday
 {
     background-color: #dfa744;
+=======
+	height: 80vh;
+>>>>>>> 48712db7634079c3233596ec86159878d49e6678
 }

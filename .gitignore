@@ -60,3 +60,4 @@ typings/
 # Cordova
 platforms/
 # plugins/
+bin/

@@ -58,10 +58,8 @@ h1 {
     padding: 10px
 }
 
-#map {
-	height: 80vh;
+#map{
+
+	height: 90vh;
 }
 
-body p {
-    text-transform: none
-}

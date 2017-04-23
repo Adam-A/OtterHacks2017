@@ -150,3 +150,4 @@ function distanceMatrixCallback(response, status) {
   console.log(response);
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }
+

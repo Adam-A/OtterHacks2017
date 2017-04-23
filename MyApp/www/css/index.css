@@ -54,16 +54,10 @@ h1 {
     text-align:center;
 }
 
-#start {
-	position: absolute;
-	top: 40vh;
-	left: 0px;
-	right: 0px;
-	width: 90vw;
-	height: 100px;
-	margin-left: auto;
-	margin-right: auto;
+.tab-content {
+    padding: 10px
 }
+
 #map {
-	height: 90vh;
+	height: 80vh;
 }

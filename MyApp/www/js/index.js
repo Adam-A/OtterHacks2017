@@ -29,7 +29,7 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
 		$('#start').click(function() {
-			$('#start').hide();
+			$('#otter-start').hide();
 			navigator.geolocation.getCurrentPosition(function(position) {
 				currentUserCoords = position.coords;
 				initialize(position.coords.latitude, position.coords.longitude);
@@ -127,6 +127,8 @@ function placeDetailsCallback(placeDetails, status) {
 	  position: place.geometry.location
 	});
 	var contentString = place.name;
+
+    console.log(place);
 
  	var infowindow = new google.maps.InfoWindow({
           content: contentString

@@ -29,7 +29,7 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
 		$('#start').click(function() {
-			$('#start').hide();
+			$('#otter-start').hide();
 			navigator.geolocation.getCurrentPosition(function(position) {
 				currentUserCoords = position.coords;
 				initialize(position.coords.latitude, position.coords.longitude);
@@ -110,13 +110,16 @@ function placesCallback(results, status) {
 	});
 	var contentString = place.name;
 
+    console.log(place);
+
  	var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
 	marker.addListener('click', function() {
 		// Info box
 		infowindow.open(map, marker);
-		//alert('todo: info about selected item');
+		// alert('todo: info about selected item');
+        $('#place').tab('show');
 	});
   }
   

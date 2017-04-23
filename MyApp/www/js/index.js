@@ -57,9 +57,10 @@ var service;
 var infowindow;
 
 var distanceMatrixService = new google.maps.DistanceMatrixService();
+var placeService;
 
 var currentUserCoords;
-var placesFound = [];
+var placesFound = {};
 var placeDistances = [];
 
 function initialize(lat,lng) {
@@ -67,7 +68,7 @@ function initialize(lat,lng) {
 
   map = new google.maps.Map(document.getElementById('map'), {
       center: latlng,
-      zoom: 15
+      zoom: 13
     });
 
   var request = {
@@ -75,30 +76,47 @@ function initialize(lat,lng) {
     radius: '3000',
     types: ['park', 'beach']
   };
-
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, placesCallback);
+	placeService = new google.maps.places.PlacesService(map);
+  placeService.nearbySearch(request, placesCallback);
 }
 
 function placesCallback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 1; i++) {
       var place = results[i];
 	  console.log(place);
-	  placesFound.push(place);
-	  console.log("Name: " + place.name + " | Lat/Lng: " + place.geometry.location.lat() + place.geometry.location.lng())
+	  placesFound[place.place_id] = place;
+	  console.log("Name: " + place.name + " | Lat/Lng: " + place.geometry.location.lat() + "," + place.geometry.location.lng())
 	  if ( place.photos ) {
-		console.log(place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+		console.log(place.photos[0].getUrl({'maxWidth': 750, 'maxHeight': 500}));
 	  }
+	  
 	  distanceMatrixService.getDistanceMatrix(
 	  {
 		origins: [new google.maps.LatLng(currentUserCoords.latitude, currentUserCoords.longitude)],
-		destinations: [place.geometry.location],
+		destinations: [{'placeId': place.place_id}],
 		travelMode: 'WALKING',
 	  }, distanceMatrixCallback);
+	  
+	  placeService.getDetails({ placeId: place.place_id }, placeDetailsCallback);
       createMarker(results[i]);
     }
   }
+}
+
+function placeDetailsCallback(placeDetails, status) {
+	if ( status == google.maps.places.PlacesServiceStatus.OK ) {
+		placesFound[placeDetails.place_id]['details'] = placeDetails;
+		$('.lightbox').html('');
+		if ( placeDetails.photos ) {
+			for ( var i = 0; i < placeDetails.photos.length; i++ ) {
+				$('.lightbox').append('<a data-type="image" data-gallery="a" data-title="' + placeDetails.name + '" href="' + placeDetails.photos[i].getUrl({'maxWidth': 750, 'maxHeight': 500}) + '"></a>');
+			}
+		}
+		
+	} else {
+		console.log("Error retrieving place details: ", status);
+	}
 }
 
   function createMarker(place) {
@@ -117,19 +135,17 @@ function placesCallback(results, status) {
         });
 	marker.addListener('click', function() {
 		// Info box
-		infowindow.open(map, marker);
-		// alert('todo: info about selected item');
-        $('#place').tab('show');
+		// infowindow.open(map, marker);
+		$('.lightbox a:first-child').ekkoLightbox();
+		//alert('todo: info about selected item');
 	});
   }
-  
-
-
 
 function distanceMatrixCallback(response, status) {
   // See Parsing the Results for
   // the basics of a callback function.
   placeDistances.push(response);
+  // todo link to placesFound
   console.log(response);
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }

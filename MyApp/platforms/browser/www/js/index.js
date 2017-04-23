@@ -150,7 +150,7 @@ function distanceMatrixCallback(response, status) {
 									  '" src="' + place.details.photos[i].getUrl({'maxWidth': 750, 'maxHeight': 500}) +
 									  '"><div class="card-block"><h4>' + place.details.name + '</h4><h5>This place is ' +
 									  response.rows[0].elements[0].distance.text + ' away, a ' + response.rows[0].elements[0].duration.text + ' walk.</h5>' + 
-									  '<a class="btn btn-primary" href="' + place.details.url + '">Walking directions via Google</a></div></div>');
+									  '<a class="btn btn-primary" href="' + place.details.url + '">Walking directions via Google</a><br><a class="btn btn-default close-btn">Close</a></div></div>');
 			}
 		}
 		
@@ -161,4 +161,4 @@ function distanceMatrixCallback(response, status) {
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }
 
-$(document).ready(function(){ $('.lightbox').hide(); });
+$(document).ready(function(){ $('.lightbox').hide(); $(document).on('click', '.close-btn', function(){$('.lightbox').hide();}); });

@@ -58,8 +58,15 @@ h1 {
     padding: 10px
 }
 
-#map{
+card {
+    margin: 20px
+}
 
-	height: 90vh;
+#map{
+	height: 80vh;
+}
+
+p {
+    text-decoration: none
 }
 

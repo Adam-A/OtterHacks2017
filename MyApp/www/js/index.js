@@ -107,13 +107,7 @@ function placesCallback(results, status) {
 function placeDetailsCallback(placeDetails, status) {
 	if ( status == google.maps.places.PlacesServiceStatus.OK ) {
 		placesFound[placeDetails.place_id]['details'] = placeDetails;
-		$('.lightbox').html('');
-		if ( placeDetails.photos ) {
-			for ( var i = 0; i < placeDetails.photos.length; i++ ) {
-				$('.lightbox').append('<a data-type="image" data-gallery="a" data-title="' + placeDetails.name + '" href="' + placeDetails.photos[i].getUrl({'maxWidth': 750, 'maxHeight': 500}) + '"></a>');
-			}
-		}
-		
+		$('.lightbox').html('');		
 	} else {
 		console.log("Error retrieving place details: ", status);
 	}
@@ -136,7 +130,8 @@ function placeDetailsCallback(placeDetails, status) {
 	marker.addListener('click', function() {
 		// Info box
 		// infowindow.open(map, marker);
-        $('.lightbox a:first-child').ekkoLightbox();
+		$('.lightbox').show();
+        $('.lightbox').slick();
         toastr.info("Swipe to view more photos.")
 		//alert('todo: info about selected item');
 	});
@@ -146,8 +141,24 @@ function distanceMatrixCallback(response, status) {
   // See Parsing the Results for
   // the basics of a callback function.
   placeDistances.push(response);
+  for (placeId in placesFound) {
+		var place = placesFound[placeId];
+	  
+		if ( place.details.photos ) {
+			for ( var i = 0; i < place.details.photos.length; i++ ) {
+				$('.lightbox').append('<div><img class="img-fluid" data-title="' + place.details.name +
+									  '" src="' + place.details.photos[i].getUrl({'maxWidth': 750, 'maxHeight': 500}) +
+									  '"><div class="card-block"><h4>' + place.details.name + '</h4><h5>This place is ' +
+									  response.rows[0].elements[0].distance.text + ' away, a ' + response.rows[0].elements[0].duration.text + ' walk.</h5>' + 
+									  '<a class="btn btn-primary" href="' + place.details.url + '">Walking directions via Google</a></div></div>');
+			}
+		}
+		
+		break;
+  }
   // todo link to placesFound
   console.log(response);
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }
 
+$(document).ready(function(){ $('.lightbox').hide(); });

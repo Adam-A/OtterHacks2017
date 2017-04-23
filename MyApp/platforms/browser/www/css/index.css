@@ -58,8 +58,42 @@ h1 {
     padding: 10px
 }
 
-#map{
-
-	height: 90vh;
+card {
+    margin: 20px
 }
 
+#map{
+	height: 80vh;
+}
+
+p {
+    text-decoration: none
+}
+
+.lightbox {
+	position: fixed !important;
+	z-index: 2;
+	top: 15vh;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90vw;
+	height: 80vh;
+	border-radius: 15px;
+    background: #fff;
+    padding: 15px;
+	text-align: center;
+	box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+
+.lightbox img {
+	max-width: 100%;
+	max-height: 30vh;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.slick-arrow {
+	display: none !important;
+}

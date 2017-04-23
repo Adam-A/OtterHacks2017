@@ -130,6 +130,10 @@ function placeDetailsCallback(placeDetails, status) {
 		//alert('todo: info about selected item');
 	});
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Design_Animations
 
 function distanceMatrixCallback(response, status) {
   // See Parsing the Results for
@@ -139,3 +143,17 @@ function distanceMatrixCallback(response, status) {
   console.log(response);
   console.log(response.rows[0].elements[0].duration.text + " to walk " + response.rows[0].elements[0].distance.text + " to " + response.destinationAddresses[0]);
 }
+<<<<<<< HEAD
+=======
+
+function toggleBounce() {
+	if (marker.getAnimation() != NULL)
+	{
+		marker.setAnimation(null);
+	}
+	else 
+	{
+		marker.setAnimation(google.maps.Animation.Bounce);
+	}
+}
+>>>>>>> Design_Animations

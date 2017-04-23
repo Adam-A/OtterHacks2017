@@ -59,9 +59,58 @@ h1 {
 }
 
 #map {
+<<<<<<< HEAD
+	height: 90vh;
+}
+
+.Cards
+{
+    background-color: white;
+}
+.Card-Footer
+{
+    background-color: #df3f4a;
+}
+.Footer-Text
+{
+    color: white;
+}
+.CardHeader-Monday
+{
+    background-color: #17cba7;
+}
+
+.CardHeader-Tuesday
+{
+    background-color: lavender;
+}
+.CardHeader-Wednesday
+{
+    background-color: lightyellow;
+}
+.CardHeader-Thursday
+{
+    background-color: lightgreen;
+}
+.CardHeader-Friday
+{
+    background-color: #df46cf;
+}
+.CardHeader-Saturday
+{
+    background-color: lightblue;
+}
+.CardHeader-Sunday
+{
+    background-color: #dfa744;
+=======
 	height: 80vh;
+<<<<<<< HEAD
 }
 
 body p {
     text-transform: none
+=======
+>>>>>>> 48712db7634079c3233596ec86159878d49e6678
+>>>>>>> NewBranch2
 }

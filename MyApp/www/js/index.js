@@ -88,7 +88,7 @@ function placesCallback(results, status) {
 	  placesFound[place.place_id] = place;
 	  console.log("Name: " + place.name + " | Lat/Lng: " + place.geometry.location.lat() + "," + place.geometry.location.lng())
 	  if ( place.photos ) {
-		console.log(place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+		console.log(place.photos[0].getUrl({'maxWidth': 750, 'maxHeight': 500}));
 	  }
 	  
 	  distanceMatrixService.getDistanceMatrix(
@@ -107,6 +107,13 @@ function placesCallback(results, status) {
 function placeDetailsCallback(placeDetails, status) {
 	if ( status == google.maps.places.PlacesServiceStatus.OK ) {
 		placesFound[placeDetails.place_id]['details'] = placeDetails;
+		$('.lightbox').html('');
+		if ( placeDetails.photos ) {
+			for ( var i = 0; i < placeDetails.photos.length; i++ ) {
+				$('.lightbox').append('<a data-type="image" data-gallery="a" data-title="' + placeDetails.name + '" href="' + placeDetails.photos[i].getUrl({'maxWidth': 750, 'maxHeight': 500}) + '"></a>');
+			}
+		}
+		
 	} else {
 		console.log("Error retrieving place details: ", status);
 	}
@@ -126,7 +133,8 @@ function placeDetailsCallback(placeDetails, status) {
         });
 	marker.addListener('click', function() {
 		// Info box
-		infowindow.open(map, marker);
+		// infowindow.open(map, marker);
+		$('.lightbox a:first-child').ekkoLightbox();
 		//alert('todo: info about selected item');
 	});
   }
